@@ -1,112 +1,76 @@
-
-// Create variables that hold references to the places in the HTML where we want to display things.
-var directionsText = document.getElementById("directions-text");
-var guessWord = document.getElementById("guessword-text");
-var winsCount = document.getElementById("wincount-text");
-var lossCount = document.getElementById("losscount-text");
-var countDown = document.getElementById("guesstimes-countdown-text");
-var lossesWord = document.getElementById("lossesword-text");
-var loggingString = document.getElementById("logging");
-
 // Creating variables to hold the number of wins, losses, and ties. They start at 0.
 var wins = 0;
 var losses = 0;
 var reminings = 10;
-var inputKey = "";
-var myWord = ""
-var displayGuessWord = [];
-var displayStr = "-";
+var wrongGuessLetters = "";
+var guessBoardWord = ""
+var userGuessedOneLetter = "";
+var guessedWordArray = [];
+var displayBoardStr = "";
 
-let indexMyword, indexInput = 0;
-var newstr = "";
-let newIndex = 0;
-var reFresh = true;
-var userGuess = "";
+let indexGuessWord, indexWrongLetters, indexRightLetters = 0;
 
-
-
-function reFreshDisplay() {
-    if (reFresh) {
-        myWord = getNewWord();
-        reminings = 10;
-        inputKey = "";
-
-        displayGuessWord = [];
-        displayStr = "";
-        for (let i = 0; i < myWord.length; i++) {
-            displayGuessWord.push("-");
-            displayStr += "-  ";
-        }
-        reFresh = false;
-
+function resetGame() {
+    guessBoardWord = getNewWord();
+    reminings = 10;
+    wrongGuessLetters = "";
+    guessedWordArray = [];
+    displayBoardStr = "";
+    for (let i = 0; i < guessBoardWord.length; i++) {
+        guessedWordArray.push("_");
+        displayBoardStr += "_  ";
     }
-
-
-    // Hide the directions
-    directionsText.textContent = "";
-    // Display the user and computer guesses, and wins/losses/ties.
-    guessWord.textContent = displayStr;
-    winsCount.textContent = "wins: " + wins;
-    lossCount.textContent = "losses: " + losses;
-    countDown.textContent = "guess remining: " + reminings;
-    lossesWord.textContent = "Input   " + inputKey;
-    logging.textContent = loggingString;
-
 }
 
 function eventHandler(_event) {
-    // Determines which key was pressed.
-    userGuess = event.key;
+    userGuessedOneLetter = event.key;
 
-    loggingString = "Nothing0 " + userGuess + "--" + inputKey;
-    if (userGuess != 'z') {
-        indexMyword = myWord.search(userGuess);
-        indexInput = inputKey.search(userGuess);
-        loggingString += "A" + indexMyword + "B" + indexInput;
-        if ((indexMyword == -1) &&
-            (indexInput == -1)) {
-            reminings--;
-            inputKey += "--" + userGuess;
-            loggingString += "Nothing2";
-        }
-        else if (indexInput != -1) {
-            inputKey += "___" + userGuess;
-            loggingString += "Nothing2";
-        }
-        else if (indexMyword != -1) {
-            loggingString += " Nothing3 " + indexMyword;
-            displayGuessWord[indexMyword] = userGuess;
+    if (userGuessedOneLetter === 'Escape') {
+        loggingString = "Exist ... Thanks for you playing ..."
+        ended = true;
+        return;
+    }
 
-            while (true) {
-                newstr = myWord.slice(indexMyword + 1, myWord.length);
-                loggingString += "size " + newstr;
-                newIndex = newstr.search(userGuess);
-                if (newIndex != -1) {
-                    indexMyword = indexMyword + 1 + newIndex;
-                    displayGuessWord[indexMyword] = userGuess;
-                }
-                else {
-                    break;
-                }
+    indexGuessWord = guessBoardWord.search(userGuessedOneLetter);
+    indexWrongLetters = wrongGuessLetters.search(userGuessedOneLetter);
+    indexRightLetters = displayBoardStr.search(userGuessedOneLetter)
+    if ((indexGuessWord == -1) && (indexWrongLetters == -1)) {
+        // Wrong letter, add into wrongGuess, reminings reduce,
+        reminings--;
+        wrongGuessLetters += "--" + userGuessedOneLetter;
+        loggingString += "Nothing1";
+    }
+    else if (indexWrongLetters != -1) {
+        // duplicated Wrong letter, do nothing, beeping 
+        wrongGuessLetters += "___" + userGuessedOneLetter;
+        loggingString += "Nothing2";
+    }
+    else if (indexRightLetters != -1) {
+        // right letter but duplicated, do nothing, beeping 
+        loggingString = "Letter was guessed";
+    }
+    else {
+        // right letter, check multiples, replace board, refresh display string
+        loggingString += " Nothing3 " + indexGuessWord;
+        displayBoardStr = "";
+        var strArray = guessBoardWord.split("");
+        for (var i = 0; i < strArray.length; i++) {
+            if (strArray[i] === userGuessedOneLetter) {
+                guessedWordArray[i] = userGuessedOneLetter;
             }
+            displayBoardStr += guessedWordArray[i] + "  ";
+        }
+    }
 
-            displayStr = "";
-            for (let i = 0; i < myWord.length; i++) {
-                displayStr += displayGuessWord[i] + "  ";
-            }
-        }
-        else {
-            loggingString += " Nothing4 ";
-        }
-        if (reminings == 0) {
-            losses++;
-            reFresh = true;
-            loggingString = "Sorry, you just lost";
-        }
-        if (displayStr.search("-") == -1) {
-            wins++;
-            loggingString = displayStr + "       Y e a h     Y o u  W o n";
-            reFresh = true;
-        }
+    // Summarize: where you are at, win or loss
+    if (reminings == 0) {
+        losses++;
+        loggingString = "Sorry, you just lost";
+        resetGame();
+    }
+    if (displayBoardStr.search("_") == -1) {
+        wins++;
+        loggingString = displayBoardStr + "       Y e a h     Y o u  W o n";
+        resetGame();
     }
 }
