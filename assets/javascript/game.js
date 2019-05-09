@@ -14,7 +14,7 @@ var lossCount = document.getElementById("losscount-text");
 var countDown = document.getElementById("guesstimes-countdown-text");
 var lossesWord = document.getElementById("lossesword-text");
 var logging = document.getElementById("logging-text");
-var img = document.getElementById("imgId");
+var hideImg = document.getElementById("theImage");
 var started = false;
 var ended = false;
 var loggingString = "Playing ......";
@@ -27,7 +27,7 @@ function getNewWord() {
 
 function display() {
     // Hide the directions
-    directionsText.textContent = "";
+    directionsText.textContent = "Press ESC to exit ";
     // Display the user and computer guesses, and wins/losses/ties.
     guessWord.textContent = displayBoardStr;
     winsCount.textContent = "wins: " + wins;
@@ -35,12 +35,14 @@ function display() {
     countDown.textContent = "guess remining: " + reminings;
     lossesWord.textContent = "Input:  " + wrongGuessLetters;
     logging.textContent = "Status:  " + loggingString;
+    hideImg.setAttribute.display = "none";
+
 }
 
 function initGame(){
     wins = 0;
     losses = 0;
-    document.getElementById("imgId").img.style.visibility = "hidden";
+    document.getElementById("theImage").setAttribute("display","none");
     resetGame();
     display();    
 }
@@ -53,7 +55,7 @@ document.onkeyup = function (event) {
         started = true;
     }
     else if (ended){
-        return;
+        stop();
     }
     else {
         eventHandler(event); 

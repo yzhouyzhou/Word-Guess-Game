@@ -7,9 +7,17 @@ body {
     font-family: 'Almendra SC';
     
 }
+#directions-text{
+    text-align: right;
+}
 
 p{
     font-size : 22px;
     font-family: 'Archivo Black';
-    line-height: 48px;
+    line-height: 30px;
+}
+
+#theImage { 
+    /* visibility: visible;  */
+    display: inline;
 }

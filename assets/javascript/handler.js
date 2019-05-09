@@ -18,7 +18,7 @@ function resetGame() {
     displayBoardStr = "";
     for (let i = 0; i < guessBoardWord.length; i++) {
         guessedWordArray.push("_");
-        displayBoardStr += "_  ";
+        displayBoardStr += "_     ";
     }
 }
 
