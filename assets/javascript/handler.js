@@ -44,11 +44,12 @@ function eventHandler(_event) {
     else if (indexWrongLetters != -1) {
         // duplicated Wrong letter, do nothing, beeping 
         wrongGuessLetters += "___" + userGuessedOneLetter;
+        document.getElementById("beepAudio").play();
         
     }
     else if (indexRightLetters != -1) {
         // right letter but duplicated, do nothing, beeping 
-        
+        document.getElementById("beepAudio").play();
     }
     else {
         // right letter, check multiples, replace board, refresh display string
@@ -67,10 +68,12 @@ function eventHandler(_event) {
         losses++;
         loggingString = "Sorry, you just lost";
         resetGame();
+        document.getElementById("beepAudio").play();
     }
     if (displayBoardStr.search("_") == -1) {
         wins++;
         loggingString = " Y o u  W o n --> " + displayBoardStr  ;
         resetGame();
+        document.getElementById("succussAudio").play();
     }
 }
