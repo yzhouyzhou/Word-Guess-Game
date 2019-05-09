@@ -5,17 +5,17 @@ var reminings = 10;
 var wrongGuessLetters = "";
 var guessBoardWord = ""
 var userGuessedOneLetter = "";
-var guessedWordArray = [];
 var displayBoardStr = "";
+var guessedWordArray = [];
 
 let indexGuessWord, indexWrongLetters, indexRightLetters = 0;
 
 function resetGame() {
     guessBoardWord = getNewWord();
     reminings = 10;
-    wrongGuessLetters = "";
-    guessedWordArray = [];
+    wrongGuessLetters = "";    
     displayBoardStr = "";
+    guessedWordArray = [];
     for (let i = 0; i < guessBoardWord.length; i++) {
         guessedWordArray.push("_");
         displayBoardStr += "_     ";
@@ -48,7 +48,8 @@ function eventHandler(_event) {
         
     }
     else if (indexRightLetters != -1) {
-        // right letter but duplicated, do nothing, beeping 
+        // right letter but duplicated, do nothing, beeping
+        wrongGuessLetters += "___"; 
         document.getElementById("beepAudio").play();
     }
     else {

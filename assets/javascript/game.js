@@ -3,7 +3,13 @@ var listOfWords = [
     "important",
     "career",
     "activity",
-    "resource"
+    "resource",
+    "document",
+    "list",
+    "market",
+    "because",
+    "stock",
+    "food"
 ];
 
 // Create variables that hold references to the places in the HTML where we want to display things.
@@ -26,8 +32,8 @@ function getNewWord() {
 }
 
 function display() {
-    // Hide the directions
-    directionsText.textContent = "Press ESC to exit ";
+    // directions
+    directionsText.textContent = "Press ESC to exit --- >>>";
     // Display the user and computer guesses, and wins/losses/ties.
     guessWord.textContent = displayBoardStr;
     winsCount.textContent = "wins: " + wins;
@@ -42,7 +48,6 @@ function display() {
 function initGame(){
     wins = 0;
     losses = 0;
-    document.getElementById("theImage").setAttribute("display","none");
     resetGame();
     display();    
 }
