@@ -1,0 +1,15 @@
+body {
+    background: url("../images/concrete_seamless.png");
+
+}
+#gameTitle{
+    font-size : 48px;
+    font-family: 'Almendra SC';
+    
+}
+
+p{
+    font-size : 22px;
+    font-family: 'Archivo Black';
+    line-height: 48px;
+}

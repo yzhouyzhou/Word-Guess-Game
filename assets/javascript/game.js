@@ -14,6 +14,7 @@ var lossCount = document.getElementById("losscount-text");
 var countDown = document.getElementById("guesstimes-countdown-text");
 var lossesWord = document.getElementById("lossesword-text");
 var logging = document.getElementById("logging-text");
+var img = document.getElementById("imgId");
 var started = false;
 var ended = false;
 var loggingString = "Playing ......";
@@ -39,6 +40,7 @@ function display() {
 function initGame(){
     wins = 0;
     losses = 0;
+    document.getElementById("imgId").img.style.visibility = "hidden";
     resetGame();
     display();    
 }

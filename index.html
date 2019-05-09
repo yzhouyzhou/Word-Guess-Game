@@ -8,14 +8,21 @@
     <title>Word Guess Game</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Almendra SC' rel='stylesheet'>
+    <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Archivo Black' rel='stylesheet'>
     <link rel="stylesheet" href="./assets/css/style.css">
 
 
 </head>
 
+
 <body>
-    <div class="container thought1">
+    <div class="container">
+        <div class="row">
+                <div class="col-md-3"> </div>
+                <div class="col-md-9" id="gameTitle">
+                    Welcome to Word Guess Game</div>
+        </div>
         <div class="row">
             <div class="col-md-4"> </div>
             <div class="col-md-6">                
@@ -25,9 +32,21 @@
                 <p id="losscount-text"></p>
                 <p id="lossesword-text"></p>
                 <p id="logging-text"></p>
-                <p id="directions-text">Press any key to start playing!</p>
             </div>
             <div class="col-md-2"> </div>
+        </div>
+        <div class="row">
+                
+                <div class="col-md-4"> </div>
+                <div class="col-md-8">
+                        <img id="imgId" src="./assets/images/cat.jpg" alt="Renea" width="50%">
+                 </div>
+        </div>
+        <div class="row">                
+                <div class="col-md-3"> </div>
+                <div class="col-md-9">
+                <p id="directions-text">Press any key to start playing  ------ >>>></p>
+            </div>
         </div>
     </div>
     <script src="./assets/javascript/game.js"></script>

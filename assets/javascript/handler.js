@@ -24,6 +24,7 @@ function resetGame() {
 
 function eventHandler(_event) {
     userGuessedOneLetter = event.key;
+    loggingString = "Playing ......";
 
     if (userGuessedOneLetter === 'Escape') {
         loggingString = "Exist ... Thanks for you playing ..."
@@ -38,20 +39,19 @@ function eventHandler(_event) {
         // Wrong letter, add into wrongGuess, reminings reduce,
         reminings--;
         wrongGuessLetters += "--" + userGuessedOneLetter;
-        loggingString += "Nothing1";
+       
     }
     else if (indexWrongLetters != -1) {
         // duplicated Wrong letter, do nothing, beeping 
         wrongGuessLetters += "___" + userGuessedOneLetter;
-        loggingString += "Nothing2";
+        
     }
     else if (indexRightLetters != -1) {
         // right letter but duplicated, do nothing, beeping 
-        loggingString = "Letter was guessed";
+        
     }
     else {
         // right letter, check multiples, replace board, refresh display string
-        loggingString += " Nothing3 " + indexGuessWord;
         displayBoardStr = "";
         var strArray = guessBoardWord.split("");
         for (var i = 0; i < strArray.length; i++) {
@@ -70,7 +70,7 @@ function eventHandler(_event) {
     }
     if (displayBoardStr.search("_") == -1) {
         wins++;
-        loggingString = displayBoardStr + "       Y e a h     Y o u  W o n";
+        loggingString = " Y o u  W o n --> " + displayBoardStr  ;
         resetGame();
     }
 }
