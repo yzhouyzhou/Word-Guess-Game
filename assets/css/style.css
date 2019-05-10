@@ -1,23 +1,33 @@
 body {
-    background: url("../images/concrete_seamless.png");
+    background-color: black;
+    background-image: url("../images/2-WordGuess.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
+.block {
+    background-color: gray;
+    padding: 30px;
+    margin-bottom: 30px;
+    color: black;
 }
-#gameTitle{
-    font-size : 48px;
-    font-family: 'Almendra SC';
-    
+
+#main-text {
+    position: absolute;
+    top: 30%;
+    left: 45%;
+    width: 40%;
+    height: 58%;
 }
-#directions-text{
+
+#directions-text {
     text-align: right;
 }
 
-p{
-    font-size : 22px;
+p {
+    font-size: 22px;
     font-family: 'Archivo Black';
-    line-height: 30px;
-}
-
-#theImage { 
-    /* visibility: visible;  */
-    display: inline;
+    line-height: 25px;
+    text-align: left;
+    color: black;
 }

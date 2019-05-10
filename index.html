@@ -6,48 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Word Guess Game</title>
+    <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Almendra SC' rel='stylesheet'>
     <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Archivo Black' rel='stylesheet'>
     <link rel="stylesheet" href="./assets/css/style.css">
-
-
 </head>
-
 
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col-md-2"> </div>
-            <div class="col-md-10" id="gameTitle">
-                Welcome to Word Guess Game</div>
-        </div>
-        <div class="row">
-            <div class="col-md-2"> </div>
-            <div class="col-md-8">
-                <p id="guessword-text"></p>
-                <p id="guesstimes-countdown-text"></p>
-                <p id="wincount-text"></p>
-                <p id="losscount-text"></p>
-                <p id="lossesword-text"></p>
-                <p id="logging-text"></p>
+        <div class="row  block" id="main-text">
+            <div class="container-table">
+                <tr>
+                    <p id="guessword-text"></p>
+                </tr>
+                <tr>
+                    <p id="guesstimes-countdown-text"></p>
+                </tr>
+                <tr>
+                    <p id="wincount-text"></p>
+                </tr>
+                <tr>
+                    <p id="losscount-text"></p>
+                </tr>
+                <tr>
+                    <p id="lossesword-text"></p>
+                </tr>
+                <tr>
+                    <p id="logging-text"></p>
+                </tr>
+                <tr>
+                    <p id="directions-text">
+                        Press any key to get started -->>
+                    </p>
+                </tr>
             </div>
-            <div class="col-md-2"> </div>
-        </div>
 
-        <div class="row">
-            <div class="col-md-2"> </div>
-            <div class="col-md-9">
-                <p id="directions-text">
-                    <img id="theImage" src="./assets/images/cat.jpg" alt="Renea" width="25%">
-                    Press any key to get started --- >>>
-                </p>
-                <iframe width="1" height="1" src="https://www.youtube.com/embed/qANKubWXlUQ?autoplay=1" 
-                frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-                </iframe>
-           </div>
-            <div class="col-md-1"> </div>
+            <iframe width="1" height="1" src="https://www.youtube.com/embed/qANKubWXlUQ?autoplay=1" frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            </iframe>
+
         </div>
     </div>
 
@@ -57,16 +55,12 @@
     <audio id="succussAudio">
         <source src="./assets/audio/button-2.wav" type="audio/mpeg">
     </audio>
-    <!-- <iframe width="1" height="1" src="https://www.youtube.com/embed/qANKubWXlUQ?autoplay=1" frameborder="0"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
 
     <script src="./assets/javascript/game.js"></script>
     <script src="./assets/javascript/handler.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Bootstrap JavaScript CDN -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-
 
 </body>
 

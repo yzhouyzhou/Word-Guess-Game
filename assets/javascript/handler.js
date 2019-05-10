@@ -23,7 +23,7 @@ function resetGame() {
 }
 
 function eventHandler(_event) {
-    userGuessedOneLetter = event.key;
+    userGuessedOneLetter = event.key.toLowerCase();
     loggingString = "Playing ......";
 
     if (userGuessedOneLetter === 'Escape') {
@@ -38,18 +38,17 @@ function eventHandler(_event) {
     if ((indexGuessWord == -1) && (indexWrongLetters == -1)) {
         // Wrong letter, add into wrongGuess, reminings reduce,
         reminings--;
-        wrongGuessLetters += "--" + userGuessedOneLetter;
-       
+        wrongGuessLetters += "," + userGuessedOneLetter;       
     }
     else if (indexWrongLetters != -1) {
         // duplicated Wrong letter, do nothing, beeping 
-        wrongGuessLetters += "___" + userGuessedOneLetter;
+        wrongGuessLetters += "," + userGuessedOneLetter.toUpperCase();
         document.getElementById("beepAudio").play();
         
     }
     else if (indexRightLetters != -1) {
         // right letter but duplicated, do nothing, beeping
-        wrongGuessLetters += "___"; 
+        wrongGuessLetters += ","; 
         document.getElementById("beepAudio").play();
     }
     else {
@@ -60,20 +59,20 @@ function eventHandler(_event) {
             if (strArray[i] === userGuessedOneLetter) {
                 guessedWordArray[i] = userGuessedOneLetter;
             }
-            displayBoardStr += guessedWordArray[i] + "  ";
+            displayBoardStr += guessedWordArray[i] + "     ";
         }
     }
 
     // Summarize: where you are at, win or loss
     if (reminings == 0) {
         losses++;
-        loggingString = "Sorry, you just lost";
+        loggingString = "Sorry, lost one";
         resetGame();
         document.getElementById("beepAudio").play();
     }
     if (displayBoardStr.search("_") == -1) {
         wins++;
-        loggingString = " Y o u  W o n --> " + displayBoardStr  ;
+        loggingString = "You Won --> " + displayBoardStr  ;
         resetGame();
         document.getElementById("succussAudio").play();
     }

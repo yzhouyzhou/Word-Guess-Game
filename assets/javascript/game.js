@@ -33,16 +33,14 @@ function getNewWord() {
 
 function display() {
     // directions
-    directionsText.textContent = "Press ESC to exit --- >>>";
+    directionsText.textContent = "Press ESC to exit -->>";
     // Display the user and computer guesses, and wins/losses/ties.
-    guessWord.textContent = displayBoardStr;
-    winsCount.textContent = "wins: " + wins;
-    lossCount.textContent = "losses: " + losses;
-    countDown.textContent = "guess remining: " + reminings;
-    lossesWord.textContent = "Input:  " + wrongGuessLetters;
+    guessWord.textContent = "Current Word: " + displayBoardStr;
+    winsCount.textContent = "Wins: " + wins;
+    lossCount.textContent = "Losses: " + losses;
+    countDown.textContent = "Guess Remining: " + reminings;
+    lossesWord.textContent = "Letters Guessed:  " + wrongGuessLetters;
     logging.textContent = "Status:  " + loggingString;
-    hideImg.setAttribute.display = "none";
-
 }
 
 function initGame(){
