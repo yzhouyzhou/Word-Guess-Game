@@ -52,7 +52,7 @@ function initGame(){
 
 
 // This function is run whenever the user presses a key.
-document.onkeyup = function (event) {
+document.keyup = function (event) {
     if (! started) {
         initGame();
         started = true;
