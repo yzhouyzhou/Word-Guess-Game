@@ -1,15 +1,14 @@
 var listOfWords = [
+    "food",
+    "stock",
     "school",
-    "important",
     "career",
+    "market",
+    "because",
     "activity",
     "resource",
     "document",
-    "list",
-    "market",
-    "because",
-    "stock",
-    "food"
+    "important"
 ];
 
 // Create variables that hold references to the places in the HTML where we want to display things.
@@ -24,7 +23,7 @@ var hideImg = document.getElementById("theImage");
 var started = false;
 var ended = false;
 var loggingString = "Playing ......";
-
+var directionString = " Press ESC to exit -->> ";
 
 function getNewWord() {
     return listOfWords[Math.floor(Math.random()
@@ -33,7 +32,7 @@ function getNewWord() {
 
 function display() {
     // directions
-    directionsText.textContent = "Press ESC to exit -->>";
+    directionsText.textContent = directionString;
     // Display the user and computer guesses, and wins/losses/ties.
     guessWord.textContent = "Current Word: " + displayBoardStr;
     winsCount.textContent = "Wins: " + wins;
@@ -43,25 +42,24 @@ function display() {
     logging.textContent = "Status:  " + loggingString;
 }
 
-function initGame(){
+function initGame() {
     wins = 0;
     losses = 0;
     resetGame();
-    display();    
+    display();
 }
 
-
 // This function is run whenever the user presses a key.
-document.keyup = function (event) {
-    if (! started) {
+document.onkeyup = function (event) {
+    if (!started) {
         initGame();
         started = true;
     }
-    else if (ended){
+    else if (ended) {
         stop();
     }
     else {
-        eventHandler(event); 
-        display();       
-    }    
+        eventHandler(event);
+        display();
+    }
 };

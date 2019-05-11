@@ -14,20 +14,25 @@ body {
 
 #main-text {
     position: absolute;
-    top: 30%;
+    top: 32%;
     left: 45%;
-    width: 40%;
+    width: 45%;
     height: 58%;
 }
 
 #directions-text {
+    position: relative;
+    top:0px;
+    height: 38px;
     text-align: right;
+    font-family: 'Almendra SC';
+    width:100%; 
+    color:whitesmoke;   
 }
 
 p {
     font-size: 22px;
-    font-family: 'Archivo Black';
+    font-family: 'Stylish';
     line-height: 25px;
     text-align: left;
-    color: black;
 }

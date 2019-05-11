@@ -1,4 +1,4 @@
-// Creating variables to hold the number of wins, losses, and ties. They start at 0.
+// Creating variables to hold the number of wins, losses started at 0.
 var wins = 0;
 var losses = 0;
 var reminings = 10;
@@ -7,13 +7,12 @@ var guessBoardWord = ""
 var userGuessedOneLetter = "";
 var displayBoardStr = "";
 var guessedWordArray = [];
-
 let indexGuessWord, indexWrongLetters, indexRightLetters = 0;
 
 function resetGame() {
     guessBoardWord = getNewWord();
     reminings = 10;
-    wrongGuessLetters = "";    
+    wrongGuessLetters = "";
     displayBoardStr = "";
     guessedWordArray = [];
     for (let i = 0; i < guessBoardWord.length; i++) {
@@ -26,8 +25,9 @@ function eventHandler(_event) {
     userGuessedOneLetter = event.key.toLowerCase();
     loggingString = "Playing ......";
 
-    if (userGuessedOneLetter === 'Escape') {
-        loggingString = "Exist ... Thanks for you playing ..."
+    if (userGuessedOneLetter === 'escape') {
+        loggingString = "Exist ... Thanks for playing ..."
+        directionString = "Refresh the browser to resume -->>";
         ended = true;
         return;
     }
@@ -38,17 +38,21 @@ function eventHandler(_event) {
     if ((indexGuessWord == -1) && (indexWrongLetters == -1)) {
         // Wrong letter, add into wrongGuess, reminings reduce,
         reminings--;
-        wrongGuessLetters += "," + userGuessedOneLetter;       
+        if (wrongGuessLetters.length >= 1) {
+            wrongGuessLetters += "," + userGuessedOneLetter;
+        }
+        else { // the first char, no need ","
+            wrongGuessLetters += userGuessedOneLetter;
+        }        
     }
     else if (indexWrongLetters != -1) {
-        // duplicated Wrong letter, do nothing, beeping 
+        // duplicated Wrong letter, do nothing, upper the guess, beeping 
         wrongGuessLetters += "," + userGuessedOneLetter.toUpperCase();
         document.getElementById("beepAudio").play();
-        
     }
     else if (indexRightLetters != -1) {
-        // right letter but duplicated, do nothing, beeping
-        wrongGuessLetters += ","; 
+        // right letter but duplicated, do nothing, add a ",", beeping
+        wrongGuessLetters += ",";
         document.getElementById("beepAudio").play();
     }
     else {
@@ -66,13 +70,13 @@ function eventHandler(_event) {
     // Summarize: where you are at, win or loss
     if (reminings == 0) {
         losses++;
-        loggingString = "Sorry, lost one";
+        loggingString = "Sorry Just Lost One";
         resetGame();
         document.getElementById("beepAudio").play();
     }
     if (displayBoardStr.search("_") == -1) {
         wins++;
-        loggingString = "You Won --> " + displayBoardStr  ;
+        loggingString = "You Won --> " + displayBoardStr;
         resetGame();
         document.getElementById("succussAudio").play();
     }
