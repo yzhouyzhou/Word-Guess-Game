@@ -27,7 +27,7 @@ function eventHandler(_event) {
 
     if (userGuessedOneLetter === 'escape') {
         loggingString = "Exist ... Thanks for playing ..."
-        directionString = "Refresh the browser to resume -->>";
+        directionString = "Refresh browser to resume -->>";
         ended = true;
         return;
     }
